@@ -574,7 +574,10 @@ footer .base{border-top:1px solid var(--hair-on-dark);padding:1.1rem 0;display:f
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<!-- Scan-bar: data-url = URL pública de Scan-bar (vacía = solo el catálogo de este archivo). Ver README. -->
+<script src="scanbar.js" data-url="" data-tienda="la-picosita-de-la-sierra"></script>
 <script>
+(window.ScanbarWeb ? window.ScanbarWeb.iniciar : arrancar => arrancar([]))(extras => {
 const IMGS=["https://lh3.googleusercontent.com/aida-public/AB6AXuCEKHcs15wlDK6WIfSbRnHVhzWp1kt_mHqVQ6GG4J988bpj1XFtJaMd_opTe9Gh4MEEZ0cOzY-Ejl1zIoqJHFC6_opdtxJ9dYVA_4ctpaUU89QD-L3oOF4MzYJaEksab6Ki-8Z4-sQlTid-aH_qjZmddGefjZ2FoGCQA5zPG7lcLJKOdTfrlxlGYIhUZyJFCG3nBvx-BQDRUkV0uXsS0id7qC0DiKqnd6ABV6w2iTNEUA2NaiO1Q72A","https://lh3.googleusercontent.com/aida-public/AB6AXuALhkIfxMzY5qSWBFJYAM2XhlEGN_GKOa2Uj4xHBkq05DbWCSRnjjlF_5_gd8oCK5qb6zm_23O8FGAIe5IV7I8fWr9BvQJueh0df-_-g6nnOfd_mc_4a7eUY4LEBo_NNcZZdUATnimTC3u6XhHaRZOsDgRAKSdKxO8Pu1homZYOD4Z27A_2fZVsdagc1I-KDPLYU7mSYOmDFwoXoszUBYI9_rBgTq7L7u6eO2CIYdtffVvkytU7X5c9","https://lh3.googleusercontent.com/aida-public/AB6AXuAtqGJEx8qILEDlQwBN3c_eGQj6rkNSq1GS43XfkmLlEQIP1K79zkIG5cMjvT2Xz9Kp9BHVJwErfQEkP-dAyoAYzKG_Z-vLPJp4SMU3N7rO2PMN_AuSKnIVF74dhnjX9kviGFcqfTGYZDW6GWzCCPUaeMhgUMSZ9JrEwnkQvF4YZ7tnFk2sY69QLSt0KnywQ9IFDQvTfqR6_7snyU0b5Plj1hY0i7mhY9qEO5iJl3jWM1sMarEyqNb2","https://lh3.googleusercontent.com/aida-public/AB6AXuBuiF89xuyFoF9lAUM8hf569khznWET1Y6y0XUMPWmF_d-9uVUqEnXowXsOrzcEe4qMNfeIZL34v7ALUUjnIkkIQLsLRVeDZ25Iap6kCtVvKZbb1lTtri2huY-mBgJlaf6Y4GVr6rIPJVZ4O8Eg9N2uC8YXDVvMDI5WR90TOjaIVNwK9OkLehiBOjiKSZgRErczg56rAJbdKi8rwpHcHD5Ll7QeLWqi0fWvJE6-QfjgFXmqdd2fz7mY","https://lh3.googleusercontent.com/aida-public/AB6AXuCCSVhVzxyvPVpAabFJlhvayCMr-JYLSdmpn9fXnNqpaY-7pWR8rNeZ1r54jArKrlL1kFVjPZyuXSdfSwig9yytNZSEoEe-3Uam96Nuv0pdMtjudPP5CRUt9x4YHn9pzclySQ6upy1xSQmv5B3IPW_khEHXUmyarihN8QcY8sWh9b_qItEiHsK5O_mWM3F3Kbr9SJ5dtb5jf2u9cqVOODgBrpy55p4xLE6We89uONgfUdxfCuWRdwyk","https://lh3.googleusercontent.com/aida-public/AB6AXuDWcuLCzT2qYPIJNXWub91M2Oymt1idoHNaxqKulBckGFseXEQXr_6DzaPQfUXEYpiEHcyLMdo8WoWo7hy5u6GFHTURMjGIhRtJVSv5hDptuXdxkehLpPLRA3iKwWEDswVfcakHEkrSm5VtBoEirp5UbtQoZwQMbDqJ2AyNjT9yjXH-pl9DSmJrrlm-aOHlABZJ12N4REfy2k9hkJrLc3HrDaVtlTlh7Zyti5AjF0jImSyIo5J9eFiJ","https://lh3.googleusercontent.com/aida-public/AB6AXuCROPur-iIo6xHWhqdM0BuXJSmxINdQbR0ohdgvoqX-ptvOGXLRPZ2YHHt_yUg0BdF4Ga-t73a6lUInb4QZa8iF1mrz1Dgp059Sh5avPOGsOU7cMZEaO1V0GRxN41WEpUeCFpcVoFSOpDObOkp-849otBa4P7SCq2nGmpeex_VgABaWYJlH3cKhJvHzD-CAX_AMJT0O6050Q1wauadbJutkhUQQEWq-l6Hkk35pFUUKiuhQv1GMTvHR","https://lh3.googleusercontent.com/aida-public/AB6AXuB_0UO0u3BDvM3k54iPVG8bva5DfrN34qgq75bMR4ZPz-czrw9waoWAGnf2oN1Ppz2FvxLy_Z2mu8-KNThzyIACLJ7nvTb2yCfq-h8M_xvVMPbtL90sJeWCguGe1ZMx0vIQ654N197AbcweQ0KpJrj1VE8VsyvGO5tw7ZJjjJJmqstMNOxgdBi2EDdIkpf3D0xwIWeJI-U1_3pN6C8jj3yvfIS4Nn8CVH7vOqzkh5-j6tk8qK5atzvB"];
 const CURT=[{g:120,p:30},{g:250,p:40},{g:450,p:55}], SALS=[{g:270,p:50},{g:350,p:65},{g:450,p:80}];
 const P=[
@@ -588,6 +591,7 @@ const P=[
  {id:"SAL-08",t:"salsa",n:"Salsa Macha Picosita",pi:4,tag:"Crujiente con semillas",d:"Fusión intensa de chile morita, pasilla, cacahuate tostado, pepitas de calabaza y aceite vegetal puro.",alt:"Frasco de salsa macha con chiles secos, semillas y aceite dorado"}
 ];
 P.forEach((p,i)=>{p.sizes=p.t==="curtido"?CURT:SALS;p.img=IMGS[i];p.sel=0;});
+P.push(...frascosDeScanbar(extras));
 const WA="529625655253";
 const mxn=n=>"$"+n.toLocaleString("es-MX")+" MXN";
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -711,6 +715,22 @@ $("#manifest").addEventListener("submit",e=>{
 /* ---------- Aviso ---------- */
 let tt;function toast(m){const el=$("#toast");el.textContent=m;el.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>el.classList.remove("show"),2200)}
 render();mfCalc();
+
+/* ---------- Frascos agregados desde Scan-bar ----------
+   Categoría en Scan-bar: curtido o salsa. Variantes: las presentaciones en gramos ("120 g, 250 g, 450 g"),
+   cada una con su precio. Atributo opcional "picor" (1 a 5). */
+function frascosDeScanbar(lista){
+  const limpio=s=>String(s||"").replace(/[<>&"'`]/g,"");
+  const propios=new Set(P.map(p=>p.id));
+  return lista.flatMap(x=>{
+    const sizes=x.variants.map(v=>({g:Number((/^(\d+)\s*g$/i.exec(v.label||"")||[])[1]),p:v.priceCents/100})).filter(z=>z.g>0);
+    if(!["curtido","salsa"].includes(x.category)||sizes.length!==x.variants.length||propios.has(x.sku)){console.warn("Scan-bar: "+x.sku+" se omite (categoría curtido o salsa; variantes en gramos)");return[]}
+    const picor=Math.min(5,Math.max(1,Math.round(Number(x.attrs&&x.attrs.picor))||3));
+    const img=window.ScanbarWeb.urlSegura(x.imageUrl)||IMGS[x.category==="curtido"?0:4];
+    return[{id:x.sku,t:x.category,n:limpio(x.name),pi:picor,tag:"Nuevo",d:limpio(x.description),alt:limpio(x.name),sizes,img,sel:0}];
+  });
+}
+});
 </script>
 </body>
 </html>
