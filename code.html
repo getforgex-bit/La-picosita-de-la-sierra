@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Picosita de la Sierra · Curtidos y salsas artesanales de Motozintla, Chiapas</title>
+<meta name="description" content="Chiles curtidos y salsas artesanales hechos en Motozintla de Mendoza, Chiapas. Menudeo a todo México y mayoreo y exportación a Centroamérica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Tokens · Regla 60-30-10 ===== */
+:root{
+  /* 60 · lienzo */
+  --parchment:#FAF7F0; --linen:#F6F3EC; --linen-deep:#F0EEE7;
+  /* 30 · estructura */
+  --laurel:#1E3A2F; --laurel-deep:#07241A;
+  --ink:#1C1C18; --ink-soft:#3F443F;
+  /* 10 · foco y conversión */
+  --morita:#9E2A2B; --morita-deep:#7E2021; --morita-light:#AB3333;
+  --panela:#C88242; --panela-ink:#7A4A17; --panela-light:#E3B685;
+  /* filetes */
+  --rule:#E2DCCE; --hair:rgba(30,58,47,.15); --hair-on-dark:rgba(250,247,240,.28);
+
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Manrope",system-ui,sans-serif;
+  --mono:"Space Grotesk",ui-monospace,monospace;
+
+  --r:0px;                 /* corte guillotina: 0 a 2px, nunca más */
+  --margin:clamp(1.25rem,5vw,5rem);
+  --gutter:clamp(1rem,2.5vw,2.5rem);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;border-radius:0;box-shadow:none;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem;-webkit-text-size-adjust:100%;scrollbar-color:var(--laurel) var(--linen);scrollbar-width:thin}
+body{background:var(--parchment);color:var(--ink);font:400 1rem/1.65 var(--sans);caret-color:var(--morita);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--laurel);color:var(--parchment)}
+::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:var(--linen)}::-webkit-scrollbar-thumb{background:var(--laurel);border:2px solid var(--linen)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.22em}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.1;text-wrap:balance;color:var(--laurel)}
+p{text-wrap:pretty}
+:focus-visible{outline:1px solid var(--morita);outline-offset:3px}
+.on-dark :focus-visible,.drawer :focus-visible{outline-color:var(--morita)}
+.on-dark :focus-visible{outline-color:var(--panela-light)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--margin)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.oldstyle{font-family:var(--serif);font-variant-numeric:oldstyle-nums proportional-nums}
+.skip{position:absolute;left:-999px;top:0;background:var(--laurel);color:var(--parchment);padding:.75rem 1rem;z-index:100}
+.skip:focus{left:0}
+
+/* ===== Folio y mástil ===== */
+.folio{background:var(--laurel-deep);color:var(--parchment);font:500 .6875rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.folio .wrap{display:flex;justify-content:space-between;gap:1.5rem;padding-top:.7rem;padding-bottom:.7rem;flex-wrap:wrap}
+.folio span+span{color:var(--panela-light)}
+.mast{background:var(--parchment);border-bottom:3px double var(--laurel);position:sticky;top:0;z-index:30}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding-top:.75rem;padding-bottom:.75rem}
+.brand{display:flex;align-items:center;gap:.9rem;text-decoration:none}
+.brand img{width:46px;height:46px;object-fit:cover;border:1px solid var(--laurel)}
+.brand b{display:block;font:700 1.375rem/1 var(--serif);color:var(--laurel)}
+.brand small{display:block;font:500 .6875rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:.3rem}
+.nav{display:flex;gap:clamp(.9rem,2vw,2rem);font:600 .75rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.nav a{text-decoration:none;padding:.5rem 0;border-bottom:1px solid transparent;transition:border-color .12s}
+.nav a:hover{border-bottom-color:var(--morita)}
+.cartbtn{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--laurel);padding:.65rem 1rem;font:600 .75rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--laurel);transition:background .12s,color .12s,transform .14s var(--ease)}
+.cartbtn:hover{background:var(--laurel);color:var(--parchment)}
+.cartbtn:active{transform:translateY(1px)}
+.cartbtn .n{font-variant-numeric:tabular-nums;min-width:1.4em;text-align:center;background:var(--morita);color:var(--parchment);padding:.15rem .35rem}
+
+/* ===== Botones ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;border:1px solid var(--morita);background:var(--morita);color:var(--parchment);padding:.95rem 1.5rem;font:600 .8125rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .12s,border-color .12s,transform .14s var(--ease),letter-spacing .2s var(--ease)}
+.btn:hover{background:var(--morita-deep);border-color:var(--morita-deep);letter-spacing:.12em}
+.btn:active{transform:translateY(1px)}
+.btn[disabled]{background:var(--linen-deep);border-color:var(--rule);color:var(--ink-soft);cursor:not-allowed;letter-spacing:.1em;transform:none}
+.btn.line{background:transparent;color:var(--morita)}
+.btn.line:hover{background:var(--morita);color:var(--parchment)}
+.btn.on-dark-btn{background:var(--panela-light);border-color:var(--panela-light);color:var(--laurel-deep)}
+.btn.on-dark-btn:hover{background:var(--parchment);border-color:var(--parchment)}
+.link{font:600 .8125rem/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--panela-ink);text-decoration:underline;text-underline-offset:.4em}
+.link:hover{color:var(--morita)}
+
+/* ===== Portada ===== */
+.hero{padding:clamp(2.5rem,6vw,5.5rem) 0 clamp(3rem,6vw,5rem)}
+.hero .wrap{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);row-gap:2.5rem;align-items:start}
+.hero-copy{grid-column:1/8}
+.hero h1{font-size:clamp(2.5rem,6.2vw,5.25rem);letter-spacing:-.02em;line-height:1.02;font-weight:700}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--morita)}
+.hero .lede{max-width:58ch;margin-top:1.75rem;font-size:1.125rem;line-height:1.7;color:var(--ink-soft)}
+.hero .lede::first-letter{font:700 4.1em/.8 var(--serif);float:left;color:var(--laurel);padding:.07em .1em 0 0}
+.cta{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;margin-top:2rem}
+.facts{list-style:none;padding:0;margin-top:2.75rem;border-top:1px solid var(--hair);display:grid;grid-template-columns:repeat(4,1fr)}
+.facts li{padding:.9rem 1rem .9rem 0;font:500 .6875rem/1.45 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.facts li+li{border-left:1px solid var(--hair);padding-left:1rem}
+.facts b{display:block;color:var(--laurel);font-weight:700}
+.plate{grid-column:9/13;margin-top:.5rem}
+.plate .frame{border:1px solid var(--laurel);padding:6px}
+.plate img{aspect-ratio:4/5;object-fit:cover;width:100%;border:1px solid var(--panela)}
+.plate figcaption{display:flex;justify-content:space-between;gap:1rem;margin-top:.75rem;font:500 .6875rem/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.plate figcaption i{font:italic 400 .9375rem/1.4 var(--serif);text-transform:none;letter-spacing:0;color:var(--laurel)}
+
+/* ===== Crónica ===== */
+section{position:relative}
+.sec{padding:clamp(3rem,7vw,6rem) 0}
+.sec-head{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);border-top:3px double var(--laurel);padding-top:1.25rem;margin-bottom:clamp(2rem,4vw,3.5rem)}
+.sec-head .mark{grid-column:1/3;font:600 .6875rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--panela-ink)}
+.sec-head h2{grid-column:3/13;font-size:clamp(2rem,4.2vw,3.5rem);letter-spacing:-.015em}
+.on-dark .sec-head{border-top-color:var(--hair-on-dark)}
+.on-dark .sec-head .mark{color:var(--panela-light)}
+.on-dark .sec-head h2{color:var(--parchment)}
+.chronicle{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);row-gap:2.5rem}
+.chronicle .pull{grid-column:3/8}
+.chronicle blockquote{font:italic 500 clamp(1.4rem,2.3vw,1.9rem)/1.35 var(--serif);color:var(--laurel);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:1.5rem 0}
+.chronicle .pull p{max-width:62ch;margin-top:1.5rem;color:var(--ink-soft)}
+.route{grid-column:9/13;border:1px solid var(--laurel);padding:6px}
+.route>div{border:1px solid var(--panela);padding:1.25rem}
+.route h3{font-size:1.125rem;margin-bottom:1rem}
+.route ol{list-style:none;padding:0}
+.route li{display:flex;gap:.9rem;padding:.7rem 0;border-top:1px solid var(--hair);font:600 .8125rem/1.4 var(--mono);letter-spacing:.04em}
+.route li span{color:var(--panela-ink);min-width:1.5em}
+.pair{grid-column:3/13;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--hair)}
+.pair article{padding:1.5rem var(--gutter) 0 0}
+.pair article+article{border-left:1px solid var(--hair);padding-left:var(--gutter);padding-right:0}
+.pair h3{font-size:1.375rem;margin-bottom:.75rem}
+.pair p{max-width:54ch;color:var(--ink-soft)}
+.pair .stamp{display:block;margin-top:1rem;font:600 .6875rem/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--panela-ink)}
+
+.process{background:var(--laurel);color:var(--parchment)}
+.process .grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);row-gap:2.5rem;align-items:start}
+.process .photo{grid-column:1/6;border:1px solid var(--hair-on-dark);padding:6px}
+.process .photo img{aspect-ratio:4/5;object-fit:cover;width:100%;border:1px solid var(--panela)}
+.process .text{grid-column:7/13}
+.process .text>p{max-width:60ch;font-size:1.0625rem;color:var(--linen)}
+.senses{list-style:none;padding:0;margin-top:2.25rem;border-top:1px solid var(--hair-on-dark)}
+.senses li{display:grid;grid-template-columns:11rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--hair-on-dark)}
+.senses b{font:600 1.125rem/1.2 var(--serif);color:var(--parchment)}
+.senses span{color:var(--linen);font-size:.9375rem}
+
+/* ===== Catálogo ===== */
+.catalog{background:var(--linen)}
+.cat-intro{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);margin-bottom:2rem}
+.cat-intro p{grid-column:3/9;max-width:64ch;color:var(--ink-soft)}
+.cat-intro .cartline{grid-column:9/13;justify-self:end;align-self:end;text-align:right;font:600 .75rem/1.6 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.cartline b{display:block;font-size:1.25rem;color:var(--laurel)}
+.tabs{display:flex;flex-wrap:wrap;border:1px solid var(--laurel);width:max-content;max-width:100%;margin-bottom:2.5rem}
+.tabs button{padding:.8rem 1.25rem;font:600 .75rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--laurel);transition:background .1s,color .1s}
+.tabs button+button{border-left:1px solid var(--laurel)}
+.tabs button:hover{background:var(--linen-deep)}
+.tabs button[aria-pressed=true]{background:var(--laurel);color:var(--parchment)}
+.line-title{display:flex;align-items:baseline;gap:1rem 1.5rem;flex-wrap:wrap;border-bottom:1px solid var(--hair);padding-bottom:.9rem;margin:0 0 1.75rem}
+.line-title h3{font-size:clamp(1.4rem,2.4vw,2rem)}
+.line-title span{font:italic 400 1rem/1.4 var(--serif);color:var(--ink-soft)}
+.grid8{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gutter);margin-bottom:clamp(2.5rem,5vw,4rem)}
+.card{border:1px solid var(--laurel);padding:5px;background:var(--parchment);display:flex}
+.card-in{border:1px solid var(--panela);padding:1rem;display:flex;flex-direction:column;width:100%;gap:.9rem}
+.card-top{min-height:1.9rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem;font:600 .6875rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.card-top>span:first-child{white-space:nowrap}
+.tag{border:1px solid var(--morita);color:var(--morita);padding:.3rem .45rem;font:600 .6875rem/1.1 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-align:right}
+.card img{aspect-ratio:4/5;object-fit:cover;width:100%;border:1px solid var(--hair);background:var(--linen-deep)}
+.card h4{font-size:1.3125rem;line-height:1.15}
+.picor{display:flex;align-items:center;gap:.5rem;font:600 .6875rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.picor svg{width:15px;height:15px;display:block}
+.picor .glyphs{display:flex;gap:2px}
+.picor .on{fill:var(--morita);stroke:var(--morita)}
+.picor .off{fill:none;stroke:var(--laurel);opacity:.35}
+.card p.d{font-size:.875rem;line-height:1.55;color:var(--ink-soft);flex:1}
+fieldset{border:0;padding:0;min-width:0}
+.sizes legend{font:600 .6875rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.5rem;padding:0}
+.sizes .opts{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--laurel)}
+.sizes label{position:relative;display:block;text-align:center;padding:.55rem .25rem;cursor:pointer;font:600 .8125rem/1.25 var(--mono);color:var(--laurel);transition:background .08s,color .08s}
+.sizes label+label{border-left:1px solid var(--laurel)}
+.sizes label small{display:block;font-size:.6875rem;font-weight:500;color:var(--ink-soft)}
+.sizes input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.sizes label:hover{background:var(--linen-deep)}
+.sizes label:has(input:checked){background:var(--laurel);color:var(--parchment)}
+.sizes label:has(input:checked) small{color:var(--panela-light)}
+.sizes label:has(input:focus-visible){outline:1px solid var(--morita);outline-offset:3px}
+.buy{display:flex;align-items:center;justify-content:space-between;gap:.75rem;border-top:1px solid var(--hair);padding-top:.9rem}
+.price{font:700 1.5rem/1 var(--mono);color:var(--laurel);letter-spacing:0}
+.price small{font-size:.6875rem;font-weight:600;letter-spacing:.1em;margin-left:.3rem;color:var(--ink-soft)}
+.buy .btn{padding:.75rem 1rem;font-size:.75rem}
+.seal{font:600 .6875rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-align:center;color:var(--panela-ink);border-top:1px solid var(--rule);padding-top:.6rem}
+.hidden{display:none!important}
+
+/* ===== Mayoreo y exportación ===== */
+.b2b{background:var(--laurel-deep);color:var(--parchment)}
+.b2b .grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);row-gap:2.5rem;align-items:start}
+.b2b .lead{grid-column:1/5}
+.b2b .lead p{color:var(--linen);max-width:46ch;margin-bottom:1.25rem}
+.b2b .lead ul{list-style:none;padding:0;border-top:1px solid var(--hair-on-dark);margin:1.75rem 0}
+.b2b .lead li{padding:.8rem 0;border-bottom:1px solid var(--hair-on-dark);font-size:.9375rem;color:var(--linen)}
+.b2b .lead li b{display:block;font:600 .75rem/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--panela-light)}
+.manifest{grid-column:5/13;background:var(--parchment);color:var(--ink);border:1px solid var(--panela-light);padding:6px}
+.manifest-in{border:1px solid var(--laurel);padding:clamp(1rem,2.5vw,1.75rem)}
+.manifest h3{font-size:1.5rem;border-bottom:3px double var(--laurel);padding-bottom:.9rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.manifest h3 span{font:600 .6875rem/1 var(--mono);letter-spacing:.1em;color:var(--panela-ink);text-transform:uppercase}
+.mf-ctrl{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem var(--gutter);padding:1.25rem 0;border-bottom:1px solid var(--hair)}
+.fld label,.fld legend{display:block;font:600 .6875rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.5rem;padding:0}
+.fld select,.fld input[type=text],.fld input[type=tel],.fld input[type=number],.fld textarea{width:100%;background:var(--parchment);border:0;border-bottom:1px solid var(--laurel);padding:.55rem .1rem;font:500 .9375rem/1.4 var(--sans);transition:border-color .1s}
+.fld select{border:1px solid var(--laurel);padding:.6rem .6rem}
+.fld textarea{resize:vertical;min-height:4.2rem;border:1px solid var(--hair);padding:.6rem}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:1px solid var(--morita);outline-offset:2px;border-color:var(--morita)}
+.fld [aria-invalid=true]{border-color:var(--morita-deep)}
+.err{display:block;margin-top:.4rem;font-size:.8125rem;color:var(--morita-deep);min-height:0}
+.err:empty{display:none}
+.box-opt{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--laurel)}
+.box-opt label{position:relative;margin:0;text-align:center;padding:.65rem;font:700 .875rem/1 var(--mono);letter-spacing:.04em;color:var(--laurel);text-transform:none;cursor:pointer;transition:background .08s,color .08s}
+.box-opt label+label{border-left:1px solid var(--laurel)}
+.box-opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.box-opt label:hover{background:var(--linen-deep)}
+.box-opt label:has(input:checked){background:var(--laurel);color:var(--parchment)}
+.box-opt label:has(input:focus-visible){outline:1px solid var(--morita);outline-offset:3px}
+table.mf{width:100%;border-collapse:collapse;margin-top:.25rem}
+.mf th{font:600 .6875rem/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--ink-soft);padding:.8rem .5rem .6rem 0;border-bottom:1px solid var(--laurel)}
+.mf th.num,.mf td.num{text-align:right;padding-right:0}
+.mf td{padding:.6rem .5rem .6rem 0;border-bottom:1px solid var(--hair);font-size:.875rem;vertical-align:middle}
+.mf tbody tr:nth-child(even){background:var(--linen)}
+.mf .sku{font:600 .6875rem/1 var(--mono);color:var(--panela-ink);letter-spacing:.06em;padding-left:.4rem}
+.mf .nm{font:600 1rem/1.2 var(--serif);color:var(--laurel)}
+.mf select{border:1px solid var(--hair);background:var(--parchment);padding:.4rem .3rem;font:500 .8125rem var(--mono);max-width:100%}
+.qty{display:inline-flex;align-items:stretch;border:1px solid var(--laurel)}
+.qty button{width:2rem;min-height:2rem;font:600 1rem/1 var(--mono);color:var(--laurel);transition:background .08s,color .08s,transform .12s var(--ease)}
+.qty button:hover{background:var(--laurel);color:var(--parchment)}
+.qty button:active{transform:translateY(1px)}
+.qty output{min-width:2.2rem;display:grid;place-items:center;font:600 .875rem var(--mono);border-left:1px solid var(--laurel);border-right:1px solid var(--laurel)}
+.mf-total{margin-top:1.25rem;border-top:3px double var(--laurel);padding-top:1rem;display:grid;grid-template-columns:1fr 1fr;gap:.5rem var(--gutter)}
+.mf-total dt{font:600 .6875rem/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.mf-total dd{font:700 1.25rem/1.3 var(--mono);color:var(--laurel);margin-bottom:.5rem}
+.mf-note{grid-column:1/-1;font-size:.8125rem;color:var(--ink-soft);border-top:1px solid var(--hair);padding-top:.8rem;max-width:68ch}
+.mf-check{display:flex;gap:.7rem;align-items:flex-start;margin-top:1.1rem;font-size:.9375rem;cursor:pointer}
+.mf-check input{appearance:none;flex:none;width:1.15rem;height:1.15rem;border:1px solid var(--laurel);background:var(--parchment);margin-top:.2rem;display:grid;place-items:center;cursor:pointer}
+.mf-check input::after{content:"";width:.55rem;height:.55rem;background:var(--morita);transform:scale(0);transition:transform .12s var(--ease)}
+.mf-check input:checked::after{transform:scale(1)}
+.mf-check input:focus-visible{outline:1px solid var(--morita);outline-offset:3px}
+.mf-actions{display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;margin-top:1.4rem}
+.mf-actions small{font-size:.8125rem;color:var(--ink-soft)}
+
+/* ===== Ficha y pie ===== */
+.ficha{display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--gutter);row-gap:2rem}
+.ficha dl{grid-column:3/9;border-top:1px solid var(--laurel)}
+.ficha dl div{display:grid;grid-template-columns:12rem 1fr;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--hair)}
+.ficha dt{font:600 .6875rem/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.ficha dd{font-weight:500}
+.ficha .reg{grid-column:9/13;border:1px solid var(--laurel);padding:6px;align-self:start}
+.ficha .reg div{border:1px solid var(--panela);padding:1.25rem;font:600 .75rem/1.9 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--laurel)}
+.ficha .reg b{display:block;font:italic 500 1.25rem/1.3 var(--serif);text-transform:none;letter-spacing:0;margin-bottom:.5rem}
+footer{background:var(--laurel);color:var(--linen);border-top:3px double var(--panela-light)}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:var(--gutter);padding:3rem 0 2.5rem}
+footer h5{font:600 .6875rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--panela-light);margin-bottom:1rem}
+footer .nm{font:700 1.5rem/1.1 var(--serif);color:var(--parchment);margin-bottom:.75rem}
+footer p,footer li{font-size:.9375rem;line-height:1.6}
+footer ul{list-style:none;padding:0}footer li{padding:.25rem 0}
+footer a{text-underline-offset:.25em}
+footer .base{border-top:1px solid var(--hair-on-dark);padding:1.1rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font:500 .6875rem/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--panela-light)}
+
+/* ===== Recibo (drawer) ===== */
+.scrim{position:fixed;inset:0;background:rgba(7,36,26,.55);z-index:60;opacity:0;pointer-events:none;transition:opacity .25s var(--ease)}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(30rem,100vw);background:var(--linen);border-left:1px solid var(--laurel);z-index:70;display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform .3s var(--ease),visibility 0s .3s}
+.drawer.open{transform:none;visibility:visible;transition:transform .3s var(--ease),visibility 0s}
+.dr-head{padding:1.25rem 1.5rem 1rem;border-bottom:3px double var(--laurel);display:flex;justify-content:space-between;gap:1rem;align-items:flex-start}
+.dr-head h2{font-size:1.5rem}
+.dr-head .meta{font:600 .6875rem/1.7 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:.5rem}
+.dr-head .meta .oldstyle{font-size:.875rem;letter-spacing:0;text-transform:none;font-weight:600}
+.close{border:1px solid var(--laurel);width:2.5rem;height:2.5rem;display:grid;place-items:center;color:var(--laurel);transition:background .1s,color .1s,transform .14s var(--ease)}
+.close:hover{background:var(--laurel);color:var(--parchment)}
+.close:active{transform:translateY(1px)}
+.dr-body{flex:1;overflow:auto;padding:1rem 1.5rem 1.5rem}
+.lines{list-style:none;padding:0;margin:0}
+.line{padding:.9rem 0;border-bottom:1px dashed var(--laurel)}
+.line .l1{display:flex;align-items:baseline;gap:.5rem}
+.line .l1 b{font:600 1.0625rem/1.25 var(--serif);color:var(--laurel)}
+.line .lead{flex:1;border-bottom:1px dotted var(--ink-soft);transform:translateY(-.25rem);min-width:1rem}
+.line .l1 .amt{font:700 .9375rem var(--mono)}
+.line .l2{display:flex;justify-content:space-between;align-items:center;margin-top:.55rem;font:500 .75rem/1.3 var(--mono);color:var(--ink-soft);letter-spacing:.05em}
+.line .rm{font:600 .6875rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:underline;text-underline-offset:.3em;color:var(--morita-deep);padding:.5rem 0 .5rem .75rem}
+.empty{padding:2.5rem 0;text-align:center;border-bottom:1px dashed var(--laurel)}
+.empty h3{font-size:1.25rem;margin-bottom:.5rem}
+.empty p{color:var(--ink-soft);max-width:34ch;margin:0 auto 1.25rem;font-size:.9375rem}
+.sums{margin:1.1rem 0 1.5rem}
+.sums div{display:flex;justify-content:space-between;gap:1rem;padding:.35rem 0;font:500 .8125rem/1.4 var(--mono);letter-spacing:.04em}
+.sums dd{text-align:right;font-weight:600}
+.sums .tot{border-top:3px double var(--laurel);margin-top:.6rem;padding-top:.9rem;font-size:1rem;color:var(--laurel)}
+.sums .tot dd{font-size:1.375rem;font-weight:700}
+.zone{font:600 .6875rem/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--panela-ink);margin-top:.4rem}
+.dr-form{display:grid;gap:1.1rem}
+.dr-foot{padding:1rem 1.5rem 1.25rem;border-top:1px solid var(--laurel);background:var(--parchment)}
+.dr-foot .btn{width:100%}
+.dr-foot small{display:block;margin-top:.7rem;font-size:.8125rem;color:var(--ink-soft);line-height:1.5}
+.toast{position:fixed;left:50%;bottom:1.25rem;transform:translate(-50%,1rem);background:var(--laurel);color:var(--parchment);border:1px solid var(--panela-light);padding:.8rem 1.1rem;font:600 .75rem/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:0;pointer-events:none;z-index:80;transition:opacity .2s,transform .3s var(--ease)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ===== Responsivo ===== */
+@media (max-width:1100px){
+  .grid8{grid-template-columns:repeat(2,1fr)}
+  .nav{display:none}
+  .hero-copy{grid-column:1/-1}.plate{grid-column:1/9}
+  .sec-head .mark{grid-column:1/-1;margin-bottom:.5rem}.sec-head h2{grid-column:1/-1}
+  .chronicle .pull{grid-column:1/-1}.route{grid-column:1/-1}.pair{grid-column:1/-1}
+  .process .photo{grid-column:1/-1;max-width:30rem}.process .text{grid-column:1/-1}
+  .cat-intro p{grid-column:1/-1}.cat-intro .cartline{display:none}
+  .b2b .lead{grid-column:1/-1}.manifest{grid-column:1/-1}
+  .ficha dl,.ficha .reg{grid-column:1/-1}
+  footer .cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .folio .wrap span:nth-child(2){display:none}
+  .brand small{display:none}
+  .grid8{grid-template-columns:1fr}
+  .plate{grid-column:1/-1}
+  .facts{grid-template-columns:1fr 1fr}.facts li:nth-child(3){border-left:0;padding-left:0}.facts li:nth-child(n+3){border-top:1px solid var(--hair)}
+  .pair{grid-template-columns:1fr}.pair article+article{border-left:0;padding-left:0;border-top:1px solid var(--hair);margin-top:1.5rem}.pair article{padding-right:0}
+  .senses li{grid-template-columns:1fr;gap:.25rem}
+  .mf-ctrl,.mf-total{grid-template-columns:1fr}
+  table.mf thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  table.mf,.mf tbody,.mf tr,.mf td{display:block}
+  .mf tr{display:grid;grid-template-columns:1fr auto;gap:.35rem 1rem;padding:.9rem .4rem;border-bottom:1px solid var(--hair)}
+  .mf td{border:0;padding:0}
+  .mf td.sku{grid-column:1;padding:0}.mf td.nm{grid-column:1/-1}
+  .mf td.num{text-align:left}
+  .mf td[data-l="Presentación"]{grid-column:1}.mf td[data-l="Cajas"]{grid-column:2;grid-row:3 / span 2}
+  .mf td::before{content:attr(data-l);display:block;font:600 .6875rem/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .mf td.sku::before,.mf td.nm::before{display:none}
+  .ficha dl div{grid-template-columns:1fr;gap:.2rem}
+  footer .cols{grid-template-columns:1fr}
+  .cartbtn span.t{display:none}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#catalogo">Saltar al catálogo</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="chile" viewBox="0 0 24 24"><path d="M5.2 20.6c-.7.2-1.100-.5-.6-.9C8.300 17 9.500 12.600 11 9.600c.6-1.200 1.500-2 2.600-2.300 2.100-.5 3.800.9 3.700 3-.2 4.200-4.600 9.600-12.100 10.300z" stroke-width="1.4" stroke-linejoin="round"/><path d="M13.600 7.300c0-1.500.8-2.800 2.600-3.500" fill="none" stroke-width="1.6" stroke-linecap="square"/></symbol>
+</svg>
+
+<div class="folio"><div class="wrap">
+  <span>Reg. Motozintla-Chis.</span>
+  <span>Folio de cosecha: Lote-2026</span>
+  <span>15°22′ N · 92°15′ O · +1,200 msnm</span>
+</div></div>
+
+<header class="mast"><div class="wrap">
+  <a class="brand" href="#top" aria-label="La Picosita de la Sierra, inicio">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZjOrJb1C1YsKEaFIlEuRyYK8i2t-kMGCVi0B5FGFse0-iwBcMElkIHXQMREtEeQws-e497uZxdr8g-mtSLjywpqWIJqJmWrjdPp8jSLPzLmIyTDSQp9N6ErGIVi3jViTN4-vvz662cv4FWAgmaGB2ezKtQp0uNRcf9mCbcMnPl6Db1pTGlHQgeOAdcBY1Y7zxQrBR-kIMYfSnUYPkKFQXe68tu5gaagmH-IHhe_1StQ85PM9FKqv_" alt="" width="46" height="46">
+    <span><b>La Picosita de la Sierra</b><small>Obrador de Motozintla, Chiapas</small></span>
+  </a>
+  <nav class="nav" aria-label="Principal">
+    <a href="#cronica">Crónica</a><a href="#proceso">Proceso</a><a href="#catalogo">Catálogo</a><a href="#mayoreo">Mayoreo y exportación</a><a href="#ficha">Obrador</a>
+  </nav>
+  <button class="cartbtn" id="openCart" type="button" aria-haspopup="dialog" aria-controls="drawer">
+    <span class="t">Mi pedido</span><span class="n" id="cartCount" aria-label="0 frascos en el pedido">0</span>
+  </button>
+</div></header>
+
+<main id="top">
+
+<!-- ============ PORTADA ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1>El alma picante de la <em>Sierra Madre:</em> curtidos y salsas de autor.</h1>
+      <p class="lede">Preservamos la memoria culinaria de las montañas chiapanecas. Chiles criollos macerados en vinagre de frutas silvestres, tatemados en comales de leña y empacados en botes de vidrio con la devoción del oficio familiar.</p>
+      <div class="cta">
+        <a class="btn" href="#catalogo">Ir al catálogo</a>
+        <a class="link" href="#cronica">Leer crónica y proceso</a>
+      </div>
+      <ul class="facts">
+        <li><b>100% artesanal</b>Hecho a mano</li>
+        <li><b>Sin conservadores</b>Ni aditivos artificiales</li>
+        <li><b>Reposo natural</b>Escabeche vivo</li>
+        <li><b>Origen Motozintla</b>Sierra Madre de Chiapas</li>
+      </ul>
+    </div>
+    <figure class="plate">
+      <div class="frame"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHvKnEfDRd0AvlQcbfoxiQeND8ItTIiJmF0ZpJiuf9aRtucXuHLx9hx4HA43jiPwwBmNpF9QIUmFeGr0nXWkeQINLzqh1Ph4pT_SKLfBT-E1CmVE8tB4kX_JW4ynIGYjoHf2bjprm7roKI6wGcUlsq4qPyoSNNLqfi6T99ZPwlmLNL3TRtGuCg7d1XSYog_frkl9n6HpBhG-FQSLEm3jQ9TjccV1I1OcnfZRE6vQMRH6gajGXIi0tJ" alt="Frascos de vidrio con chiles morita en escabeche, zanahoria, laurel y ajo sobre una mesa de madera, junto a una ventana de adobe" width="640" height="800"></div>
+      <figcaption><span>Lote Sierra 2026</span><i>“El sabor del comal vivo y la huerta de altura.”</i></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CRÓNICA ============ -->
+<section class="sec" id="cronica" style="border-top:1px solid var(--hair)">
+  <div class="wrap">
+    <div class="sec-head"><div class="mark">Cap. I · Cuaderno de campo</div><h2>El origen en la frontera sur</h2></div>
+    <div class="chronicle">
+      <div class="pull">
+        <blockquote>La Picosita de la Sierra, S.A. de C.V. es una empresa alimenticia chiapaneca dedicada al mercado de conservas tradicionales, especializada en la elaboración de chiles curtidos enlatados y salsas artesanales.</blockquote>
+        <p>Fundada con tenacidad por estudiantes y emprendedores del Instituto Tecnológico de Frontera Comalapa (Unidad Motozintla), nuestra iniciativa nació como una investigación de rescate gastronómico y tecnificación de escabeches sin aditivos artificiales.</p>
+      </div>
+      <aside class="route" aria-label="Ruta de expansión"><div>
+        <h3>Ruta de expansión</h3>
+        <ol>
+          <li><span class="mono">1</span>Motozintla</li>
+          <li><span class="mono">2</span>Frontera Comalapa</li>
+          <li><span class="mono">3</span>Guatemala y Centroamérica</li>
+        </ol>
+      </div></aside>
+      <div class="pair">
+        <article>
+          <h3>Innovación tecnológica</h3>
+          <p>Estandarización de acidez térmica y vacío hermético desarrollada en laboratorios regionales, garantizando inocuidad sin perder la textura crujiente de la huerta serrana.</p>
+          <span class="stamp">Patente y lote certificado</span>
+        </article>
+        <article>
+          <h3>Comercio justo de montaña</h3>
+          <p>Adquisición directa con familias campesinas de Motozintla, Siltepec y Mazapa. Semillas criollas de jalapeño y serrano cultivadas a más de 1,200 metros sobre el nivel del mar.</p>
+          <span class="stamp">+35 familias productoras</span>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec process on-dark" id="proceso">
+  <div class="wrap">
+    <div class="sec-head"><div class="mark">Cap. II · El escabeche vivo</div><h2>Tatemado en barro y reposo en laurel</h2></div>
+    <div class="grid">
+      <figure class="photo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC11J3rer8N0Be7WXoi6nAuluKMIZJhrbvbJJRkJ-QSl_BHsiZZ1obWbSsr8jcJMwQvE4AKiTxyQHxQw3kWQ2vOI0Y2M-_2rTlpbp9rJCm1ol6_k_FW92F4tGVF7BYA7bb-ybtgTriBNScWnF8tj-BIWN1gLAcCyRN78DYSicxwbBZkgqb9Djh0tgZj04-9GX-iMqY5IkV34eg6gmvZ7JpSetCqkXFcVkXeL_3r0yZEVWZajXanjFT-" alt="Chiles serranos y morita asándose sobre un comal de barro, con brasas de leña y humo aromático" width="640" height="800" loading="lazy"></figure>
+      <div class="text">
+        <p>Nuestros chiles no se hierven en vinagres sintéticos. Pasan por el comal de barro cocido con leña de encino, sellando los azúcares naturales antes de sumergirse en vinagre de frutas con pimienta gorda, tomillo silvestre y clavos de olor.</p>
+        <ul class="senses">
+          <li><b>Picor gradual</b><span>Intensidad que despierta el paladar sin anestesiar el sabor.</span></li>
+          <li><b>Acidez amable</b><span>Notas cítricas y vinagre de caña reposado con aromáticas.</span></li>
+          <li><b>Crocancia real</b><span>Zanahoria y rajas firmes que mantienen consistencia al masticar.</span></li>
+          <li><b>Aroma ahumado</b><span>Tostado de comal que evoca la cocina de leña chiapaneca.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATÁLOGO ============ -->
+<section class="sec catalog" id="catalogo">
+  <div class="wrap">
+    <div class="sec-head"><div class="mark">Catálogo oficial 2026</div><h2>De la Sierra a tu mesa</h2></div>
+    <div class="cat-intro">
+      <p>Selección de conservas y salsas. Precios oficiales de productor en Motozintla. Elige el tamaño del frasco y añádelo a tu pedido.</p>
+      <div class="cartline" aria-live="polite">Pedido actual<b class="mono" id="cartTotalLine">$0 MXN</b></div>
+    </div>
+    <div class="tabs" role="group" aria-label="Filtrar catálogo">
+      <button type="button" data-f="all" aria-pressed="true">Todos los productos</button>
+      <button type="button" data-f="curtido" aria-pressed="false">Chiles curtidos</button>
+      <button type="button" data-f="salsa" aria-pressed="false">Salsas de mesa</button>
+    </div>
+    <div id="line-curtido">
+      <div class="line-title"><h3>Chiles curtidos en escabeche</h3><span>Recetas heredadas de Motozintla</span></div>
+      <div class="grid8" id="grid-curtido"></div>
+    </div>
+    <div id="line-salsa">
+      <div class="line-title"><h3>Salsas artesanales de mesa</h3><span>Maceradas y tatemadas · molienda fina</span></div>
+      <div class="grid8" id="grid-salsa"></div>
+    </div>
+    <noscript><p>El catálogo necesita JavaScript. Pide por WhatsApp al <a href="https://wa.me/529625655253">962-565-5253</a>.</p></noscript>
+  </div>
+</section>
+
+<!-- ============ MAYOREO Y EXPORTACIÓN ============ -->
+<section class="sec b2b on-dark" id="mayoreo">
+  <div class="wrap">
+    <div class="sec-head"><div class="mark">Frontera Comalapa · Guatemala</div><h2>Mayoreo y exportación a Centroamérica</h2></div>
+    <div class="grid">
+      <div class="lead">
+        <p>Abastecemos a restaurantes de cocina de autor, cadenas gourmet, taquerías tradicionales y distribuidores mayoristas. Contamos con cajas máster de 24 y 48 frascos, tarimas consolidadas y despacho fronterizo con documentación fitosanitaria.</p>
+        <ul>
+          <li><b>Cajas máster</b>De 24 y de 48 frascos. Descuento de hasta 25% por volumen sobre precio de menudeo.</li>
+          <li><b>Envíos transfronterizos</b>Entregas en San Marcos, Huehuetenango y Ciudad de Guatemala.</li>
+          <li><b>Atención directa</b>De lunes a sábado, con el obrador.</li>
+        </ul>
+        <a class="btn on-dark-btn" href="tel:+529625655253">Llamar al obrador: 962-565-5253</a>
+      </div>
+
+      <form class="manifest" id="manifest" novalidate aria-labelledby="mfTitle"><div class="manifest-in">
+        <h3 id="mfTitle">Manifiesto de carga <span>Obrador Motozintla → destino</span></h3>
+        <div class="mf-ctrl">
+          <fieldset class="fld"><legend>Caja máster</legend>
+            <div class="box-opt"><label><input type="radio" name="box" value="24" checked>24 frascos</label><label><input type="radio" name="box" value="48">48 frascos</label></div>
+          </fieldset>
+          <div class="fld"><label for="dest">Destino</label>
+            <select id="dest">
+              <option>Frontera Comalapa, Chis.</option>
+              <option>San Marcos, Guatemala</option>
+              <option>Huehuetenango, Guatemala</option>
+              <option>Ciudad de Guatemala</option>
+            </select>
+          </div>
+        </div>
+        <table class="mf">
+          <caption class="sr">Cajas por producto</caption>
+          <thead><tr><th scope="col">SKU</th><th scope="col">Producto</th><th scope="col">Presentación</th><th scope="col">Cajas</th><th scope="col" class="num">Piezas</th></tr></thead>
+          <tbody id="mfRows"></tbody>
+        </table>
+        <dl class="mf-total" aria-live="polite">
+          <div><dt>Cajas</dt><dd id="tBoxes">0</dd></div>
+          <div><dt>Piezas</dt><dd id="tPieces">0</dd></div>
+          <div><dt>Peso neto del producto</dt><dd id="tKg">0 kg</dd></div>
+          <div><dt>Referencia a precio de menudeo</dt><dd id="tRef">$0 MXN</dd></div>
+          <p class="mf-note">El descuento por volumen (hasta 25%), el cubicaje y el cálculo arancelario Frontera Comalapa–Guatemala se cotizan con el obrador; no se estiman aquí. Peso neto sin envase ni caja.</p>
+        </dl>
+        <label class="mf-check"><input type="checkbox" id="fito"><span>Solicitar ficha fitosanitaria y documentación de despacho fronterizo</span></label>
+        <div class="fld" style="margin-top:1.1rem"><label for="mfName">Nombre o razón social</label><input id="mfName" type="text" autocomplete="organization"><span class="err" id="mfErr" role="alert"></span></div>
+        <div class="mf-actions">
+          <button class="btn" type="submit">Solicitar cotización por WhatsApp</button>
+          <small>Se abre WhatsApp con el manifiesto listo para enviar.</small>
+        </div>
+      </div></form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FICHA ============ -->
+<section class="sec" id="ficha">
+  <div class="wrap">
+    <div class="sec-head"><div class="mark">Régimen S.A. de C.V.</div><h2>Ficha de identidad y obrador</h2></div>
+    <div class="ficha">
+      <dl>
+        <div><dt>Razón social</dt><dd>La Picosita de la Sierra, S.A. de C.V.</dd></div>
+        <div><dt>Sede y planta</dt><dd>Motozintla de Mendoza, Chiapas</dd></div>
+        <div><dt>Teléfono / WhatsApp</dt><dd class="mono"><a href="https://wa.me/529625655253">962-565-5253</a></dd></div>
+        <div><dt>Cuna académica</dt><dd>IT Frontera Comalapa (Unidad Motozintla)</dd></div>
+        <div><dt>Caducidad en alacena</dt><dd>12 meses sin destapar · 60 días en frío</dd></div>
+        <div><dt>Ubicación</dt><dd>Sierra Mariscal Chiapaneca</dd></div>
+      </dl>
+      <aside class="reg"><div><b>Obrador Motozintla</b>Sierra Madre de Chiapas<br>Reg. Motozintla-Chis.<br>Folio de cosecha: Lote-2026</div></aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><p class="nm">La Picosita de la Sierra</p><p>Obrador y botica culinaria en la Sierra Madre de Chiapas. Rescatamos recetas familiares, curtidos volcánicos y salsas tatemadas con paciencia artesanal.</p></div>
+      <div><h5>Compendio</h5><ul><li><a href="#catalogo">Chiles curtidos</a></li><li><a href="#catalogo">Salsas de mesa</a></li><li><a href="#proceso">Tatemado al comal de barro</a></li></ul></div>
+      <div><h5>Comercio</h5><ul><li><a href="#mayoreo">Mayoreo para restaurantes</a></li><li><a href="#mayoreo">Exportación a Centroamérica</a></li><li><a href="#mayoreo">Ficha fitosanitaria</a></li></ul></div>
+      <div><h5>Contacto del obrador</h5><ul><li>Motozintla de Mendoza, Chiapas, México</li><li>WhatsApp: <a href="https://wa.me/529625655253">962-565-5253</a></li></ul></div>
+    </div>
+    <div class="base"><span>© 2025 La Picosita de la Sierra. Tradición culinaria chiapaneca.</span><span>Envasado en frasco de vidrio reusable</span></div>
+  </div>
+</footer>
+
+<!-- ============ RECIBO (DRAWER) ============ -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drTitle" tabindex="-1">
+  <div class="dr-head">
+    <div>
+      <h2 id="drTitle">Recibo de pedido</h2>
+      <p class="meta">Folio provisional <span class="oldstyle" id="drFolio"></span><br><span class="oldstyle" id="drDate"></span> · Obrador Motozintla</p>
+    </div>
+    <button class="close" id="closeCart" type="button" aria-label="Cerrar recibo"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M1 1l12 12M13 1L1 13"/></svg></button>
+  </div>
+  <div class="dr-body">
+    <div id="drEmpty" class="empty"><h3>Aún no hay frascos en el recibo</h3><p>Elige una presentación en el catálogo y añádela a tu pedido.</p><button class="btn line" type="button" id="goCat">Ver el catálogo</button></div>
+    <ul class="lines" id="lines"></ul>
+    <dl class="sums" id="sums">
+      <div><dt>Frascos</dt><dd id="sQty">0</dd></div>
+      <div><dt>Subtotal</dt><dd id="sSub">$0 MXN</dd></div>
+      <div><dt>Envío por código postal</dt><dd id="sShip">Por confirmar</dd></div>
+      <div class="tot"><dt>Total estimado</dt><dd id="sTot">$0 MXN</dd></div>
+    </dl>
+    <form class="dr-form" id="orderForm" novalidate>
+      <div class="fld"><label for="cName">Nombre o razón social</label><input id="cName" type="text" autocomplete="name" aria-describedby="cNameE"><span class="err" id="cNameE"></span></div>
+      <div class="fld"><label for="cCp">Código postal de entrega</label><input id="cCp" type="text" inputmode="numeric" maxlength="5" autocomplete="postal-code" aria-describedby="cCpE cZone"><span class="err" id="cCpE"></span><p class="zone" id="cZone"></p></div>
+      <div class="fld"><label for="cAddr">Dirección de entrega</label><textarea id="cAddr" autocomplete="street-address" aria-describedby="cAddrE"></textarea><span class="err" id="cAddrE"></span></div>
+    </form>
+  </div>
+  <div class="dr-foot">
+    <button class="btn" type="submit" form="orderForm" id="sendOrder" disabled>Enviar pedido por WhatsApp</button>
+    <small>El costo de envío se confirma por código postal antes de cobrar. Sin cargo hasta que lo apruebes.</small>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const IMGS=["https://lh3.googleusercontent.com/aida-public/AB6AXuCEKHcs15wlDK6WIfSbRnHVhzWp1kt_mHqVQ6GG4J988bpj1XFtJaMd_opTe9Gh4MEEZ0cOzY-Ejl1zIoqJHFC6_opdtxJ9dYVA_4ctpaUU89QD-L3oOF4MzYJaEksab6Ki-8Z4-sQlTid-aH_qjZmddGefjZ2FoGCQA5zPG7lcLJKOdTfrlxlGYIhUZyJFCG3nBvx-BQDRUkV0uXsS0id7qC0DiKqnd6ABV6w2iTNEUA2NaiO1Q72A","https://lh3.googleusercontent.com/aida-public/AB6AXuALhkIfxMzY5qSWBFJYAM2XhlEGN_GKOa2Uj4xHBkq05DbWCSRnjjlF_5_gd8oCK5qb6zm_23O8FGAIe5IV7I8fWr9BvQJueh0df-_-g6nnOfd_mc_4a7eUY4LEBo_NNcZZdUATnimTC3u6XhHaRZOsDgRAKSdKxO8Pu1homZYOD4Z27A_2fZVsdagc1I-KDPLYU7mSYOmDFwoXoszUBYI9_rBgTq7L7u6eO2CIYdtffVvkytU7X5c9","https://lh3.googleusercontent.com/aida-public/AB6AXuAtqGJEx8qILEDlQwBN3c_eGQj6rkNSq1GS43XfkmLlEQIP1K79zkIG5cMjvT2Xz9Kp9BHVJwErfQEkP-dAyoAYzKG_Z-vLPJp4SMU3N7rO2PMN_AuSKnIVF74dhnjX9kviGFcqfTGYZDW6GWzCCPUaeMhgUMSZ9JrEwnkQvF4YZ7tnFk2sY69QLSt0KnywQ9IFDQvTfqR6_7snyU0b5Plj1hY0i7mhY9qEO5iJl3jWM1sMarEyqNb2","https://lh3.googleusercontent.com/aida-public/AB6AXuBuiF89xuyFoF9lAUM8hf569khznWET1Y6y0XUMPWmF_d-9uVUqEnXowXsOrzcEe4qMNfeIZL34v7ALUUjnIkkIQLsLRVeDZ25Iap6kCtVvKZbb1lTtri2huY-mBgJlaf6Y4GVr6rIPJVZ4O8Eg9N2uC8YXDVvMDI5WR90TOjaIVNwK9OkLehiBOjiKSZgRErczg56rAJbdKi8rwpHcHD5Ll7QeLWqi0fWvJE6-QfjgFXmqdd2fz7mY","https://lh3.googleusercontent.com/aida-public/AB6AXuCCSVhVzxyvPVpAabFJlhvayCMr-JYLSdmpn9fXnNqpaY-7pWR8rNeZ1r54jArKrlL1kFVjPZyuXSdfSwig9yytNZSEoEe-3Uam96Nuv0pdMtjudPP5CRUt9x4YHn9pzclySQ6upy1xSQmv5B3IPW_khEHXUmyarihN8QcY8sWh9b_qItEiHsK5O_mWM3F3Kbr9SJ5dtb5jf2u9cqVOODgBrpy55p4xLE6We89uONgfUdxfCuWRdwyk","https://lh3.googleusercontent.com/aida-public/AB6AXuDWcuLCzT2qYPIJNXWub91M2Oymt1idoHNaxqKulBckGFseXEQXr_6DzaPQfUXEYpiEHcyLMdo8WoWo7hy5u6GFHTURMjGIhRtJVSv5hDptuXdxkehLpPLRA3iKwWEDswVfcakHEkrSm5VtBoEirp5UbtQoZwQMbDqJ2AyNjT9yjXH-pl9DSmJrrlm-aOHlABZJ12N4REfy2k9hkJrLc3HrDaVtlTlh7Zyti5AjF0jImSyIo5J9eFiJ","https://lh3.googleusercontent.com/aida-public/AB6AXuCROPur-iIo6xHWhqdM0BuXJSmxINdQbR0ohdgvoqX-ptvOGXLRPZ2YHHt_yUg0BdF4Ga-t73a6lUInb4QZa8iF1mrz1Dgp059Sh5avPOGsOU7cMZEaO1V0GRxN41WEpUeCFpcVoFSOpDObOkp-849otBa4P7SCq2nGmpeex_VgABaWYJlH3cKhJvHzD-CAX_AMJT0O6050Q1wauadbJutkhUQQEWq-l6Hkk35pFUUKiuhQv1GMTvHR","https://lh3.googleusercontent.com/aida-public/AB6AXuB_0UO0u3BDvM3k54iPVG8bva5DfrN34qgq75bMR4ZPz-czrw9waoWAGnf2oN1Ppz2FvxLy_Z2mu8-KNThzyIACLJ7nvTb2yCfq-h8M_xvVMPbtL90sJeWCguGe1ZMx0vIQ654N197AbcweQ0KpJrj1VE8VsyvGO5tw7ZJjjJJmqstMNOxgdBi2EDdIkpf3D0xwIWeJI-U1_3pN6C8jj3yvfIS4Nn8CVH7vOqzkh5-j6tk8qK5atzvB"];
+const CURT=[{g:120,p:30},{g:250,p:40},{g:450,p:55}], SALS=[{g:270,p:50},{g:350,p:65},{g:450,p:80}];
+const P=[
+ {id:"CUR-01",t:"curtido",n:"Rajas Rojas de Morita Tatemado",pi:4,tag:"Especialidad de la Sierra",d:"Tiras de chile morita asado al comal con cebolla fileteada, orégano de monte y aceite vegetal reposado.",alt:"Frasco de rajas de chile morita en aceite y vinagre con laurel y ajo"},
+ {id:"CUR-02",t:"curtido",n:"Rajas con Zanahoria Clásicas",pi:3,tag:"El favorito casero",d:"Chiles jalapeños encurtidos con cebolla cambray, zanahorias crujientes y pimienta gorda de Chiapas.",alt:"Frasco de jalapeños en rajas con zanahoria y cebolla"},
+ {id:"CUR-03",t:"curtido",n:"Rajas Verdes Serranas",pi:4,tag:"",d:"Rodajas de serrano verde de altura con vinagre artesanal, tomillo silvestre y dientes de ajo confitados.",alt:"Frasco de rodajas de chile serrano verde con hierbas y ajo"},
+ {id:"CUR-04",t:"curtido",n:"Chiles Jalapeños Enteros",pi:3,tag:"",d:"Piezas enteras, carnosas y firmes seleccionadas a mano, curtidas al vacío en salmuera con hierbas serranas.",alt:"Frasco de chiles jalapeños enteros en salmuera con laurel y cilantro"},
+ {id:"SAL-05",t:"salsa",n:"La Clásica Roja",pi:3,tag:"",d:"Base tradicional de jitomate guajillo asado con chile de árbol seco, ajo y sal de grano de las costas chiapanecas.",alt:"Botella de salsa roja tradicional"},
+ {id:"SAL-06",t:"salsa",n:"La Verde Tatemada",pi:3,tag:"",d:"Tomatillo milpero y serrano fresco asados en comal con cilantro de monte y un toque de lima criolla.",alt:"Frasco de salsa verde tatemada"},
+ {id:"SAL-07",t:"salsa",n:"La Habanera Picosita",pi:5,tag:"Fuego extremo",d:"Puro chile habanero de huerta asado a la ceniza, macerado con jugo de naranja agria, ajo y gotas de limón real.",alt:"Botella de salsa de habanero naranja con rodajas de naranja y limón"},
+ {id:"SAL-08",t:"salsa",n:"Salsa Macha Picosita",pi:4,tag:"Crujiente con semillas",d:"Fusión intensa de chile morita, pasilla, cacahuate tostado, pepitas de calabaza y aceite vegetal puro.",alt:"Frasco de salsa macha con chiles secos, semillas y aceite dorado"}
+];
+P.forEach((p,i)=>{p.sizes=p.t==="curtido"?CURT:SALS;p.img=IMGS[i];p.sel=0;});
+const WA="529625655253";
+const mxn=n=>"$"+n.toLocaleString("es-MX")+" MXN";
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let cart=store.get("picosita-cart")||{};            // "CUR-01|1" -> qty
+cart=Object.fromEntries(Object.entries(cart).filter(([k,q])=>{const [id,i]=k.split("|");const p=P.find(x=>x.id===id);return p&&p.sizes[i]&&q>0}));
+
+/* ---------- Catálogo ---------- */
+const chile=(on)=>`<svg class="${on?"on":"off"}" viewBox="0 0 24 24" aria-hidden="true"><use href="#chile"/></svg>`;
+function card(p,idx){
+  const n=idx+1, s=p.sizes[p.sel];
+  return `<article class="card" data-id="${p.id}"><div class="card-in">
+    <div class="card-top"><span>N.º <span class="mono">${String(n).padStart(2,"0")}</span></span>${p.tag?`<span class="tag">${p.tag}</span>`:""}</div>
+    <img src="${p.img}" alt="${p.alt}" width="400" height="500" loading="lazy">
+    <h4>${p.n}</h4>
+    <div class="picor" role="img" aria-label="Picor ${p.pi} de 5"><span class="glyphs">${[1,2,3,4,5].map(i=>chile(i<=p.pi)).join("")}</span>Picor ${p.pi}/5</div>
+    <p class="d">${p.d}</p>
+    <fieldset class="sizes"><legend>Presentación · <span class="mono">${p.id}</span></legend><div class="opts">${p.sizes.map((z,i)=>`<label><input type="radio" name="sz-${p.id}" value="${i}" ${i===p.sel?"checked":""}><span>${z.g} g<small>$${z.p}</small></span></label>`).join("")}</div></fieldset>
+    <div class="buy"><span class="price" data-price>$${s.p}<small>MXN</small></span><button class="btn" type="button" data-add>Añadir</button></div>
+    <div class="seal">Obrador Motozintla — Sierra Madre de Chiapas</div>
+  </div></article>`;
+}
+P.forEach((p,i)=>{$("#grid-"+p.t).insertAdjacentHTML("beforeend",card(p,i))});
+$$(".card").forEach(el=>{
+  const p=P.find(x=>x.id===el.dataset.id);
+  el.addEventListener("change",e=>{if(e.target.name==="sz-"+p.id){p.sel=+e.target.value;el.querySelector("[data-price]").innerHTML=`$${p.sizes[p.sel].p}<small>MXN</small>`}});
+  el.querySelector("[data-add]").addEventListener("click",()=>{add(p.id,p.sel);toast("Añadido: "+p.n+" · "+p.sizes[p.sel].g+" g")});
+});
+$$(".tabs button").forEach(b=>b.addEventListener("click",()=>{
+  $$(".tabs button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  const f=b.dataset.f;$("#line-curtido").classList.toggle("hidden",f==="salsa");$("#line-salsa").classList.toggle("hidden",f==="curtido");
+}));
+
+/* ---------- Carrito ---------- */
+const keyOf=(id,i)=>id+"|"+i;
+function add(id,i,d=1){const k=keyOf(id,i);cart[k]=Math.max(0,(cart[k]||0)+d);if(!cart[k])delete cart[k];save()}
+function totals(){let q=0,s=0;for(const [k,n] of Object.entries(cart)){const [id,i]=k.split("|");const p=P.find(x=>x.id===id);q+=n;s+=n*p.sizes[i].p}return{q,s}}
+function save(){store.set("picosita-cart",cart);render()}
+function render(){
+  const {q,s}=totals();
+  $("#cartCount").textContent=q;$("#cartCount").setAttribute("aria-label",q+" frascos en el pedido");
+  $("#cartTotalLine").textContent=mxn(s);
+  const lines=$("#lines");
+  lines.innerHTML=Object.entries(cart).map(([k,n])=>{
+    const [id,i]=k.split("|");const p=P.find(x=>x.id===id),z=p.sizes[i];
+    return `<li class="line" data-k="${k}"><div class="l1"><b>${p.n}</b><span class="lead"></span><span class="amt">${mxn(n*z.p)}</span></div>
+      <div class="l2"><span>${p.id} · ${z.g} g · $${z.p} c/u</span><span class="qty"><button type="button" data-d="-1" aria-label="Quitar uno: ${p.n}">−</button><output aria-label="Cantidad">${n}</output><button type="button" data-d="1" aria-label="Añadir uno: ${p.n}">+</button></span></div>
+      <div class="l2"><span></span><button type="button" class="rm" data-rm>Quitar renglón</button></div></li>`}).join("");
+  $("#drEmpty").classList.toggle("hidden",q>0);$("#sums").classList.toggle("hidden",q===0);$("#orderForm").classList.toggle("hidden",q===0);
+  $("#sendOrder").disabled=q===0;
+  $("#sQty").textContent=q;$("#sSub").textContent=mxn(s);$("#sTot").textContent=mxn(s);
+}
+$("#lines").addEventListener("click",e=>{
+  const li=e.target.closest(".line");if(!li)return;const [id,i]=li.dataset.k.split("|");
+  if(e.target.dataset.d)add(id,i,+e.target.dataset.d);
+  if(e.target.dataset.rm){delete cart[li.dataset.k];save()}
+});
+
+/* ---------- Drawer ---------- */
+const drawer=$("#drawer"),scrim=$("#scrim");let lastFocus=null;
+const pad=n=>String(n).padStart(2,"0");
+function openCart(){
+  lastFocus=document.activeElement;
+  const d=new Date();$("#drFolio").textContent="PS-"+String(d.getFullYear()).slice(2)+pad(d.getMonth()+1)+pad(d.getDate());
+  $("#drDate").textContent=d.toLocaleDateString("es-MX",{day:"numeric",month:"long",year:"numeric"});
+  drawer.classList.add("open");scrim.classList.add("open");$("main").inert=$("header").inert=$("footer").inert=true;
+  document.body.style.overflow="hidden";setTimeout(()=>$("#closeCart").focus(),30);
+}
+function closeCart(){drawer.classList.remove("open");scrim.classList.remove("open");$("main").inert=$("header").inert=$("footer").inert=false;document.body.style.overflow="";lastFocus&&lastFocus.focus()}
+$("#openCart").addEventListener("click",openCart);$("#closeCart").addEventListener("click",closeCart);scrim.addEventListener("click",closeCart);
+$("#goCat").addEventListener("click",()=>{closeCart();location.hash="#catalogo"});
+document.addEventListener("keydown",e=>{
+  if(!drawer.classList.contains("open"))return;
+  if(e.key==="Escape")closeCart();
+  if(e.key==="Tab"){const f=[...drawer.querySelectorAll("button:not([disabled]),input,textarea,select,a[href]")].filter(x=>x.offsetParent);if(!f.length)return;const a=f[0],z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+});
+$("#cCp").addEventListener("input",e=>{
+  e.target.value=e.target.value.replace(/\D/g,"");const v=e.target.value;
+  $("#cZone").textContent=v.length===5?(/^(29|30)/.test(v)?"Zona: Chiapas, despacho cercano al obrador":"Zona: resto de la República"):"";
+  $("#sShip").textContent=v.length===5?"Se confirma por WhatsApp":"Por confirmar";
+});
+function setErr(id,msg){const el=$("#"+id),inp=$("#"+id.replace(/E$/,""));el.textContent=msg;if(inp)inp.setAttribute("aria-invalid",!!msg)}
+$("#orderForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const name=$("#cName").value.trim(),cp=$("#cCp").value.trim(),addr=$("#cAddr").value.trim();let bad=null;
+  setErr("cNameE",name?"":"Escribe tu nombre para el recibo.");setErr("cCpE",/^\d{5}$/.test(cp)?"":"Escribe un código postal de 5 dígitos.");setErr("cAddrE",addr?"":"Escribe la dirección de entrega.");
+  bad=!name?"#cName":!/^\d{5}$/.test(cp)?"#cCp":!addr?"#cAddr":null;if(bad){$(bad).focus();return}
+  const {q,s}=totals();
+  const rows=Object.entries(cart).map(([k,n])=>{const [id,i]=k.split("|");const p=P.find(x=>x.id===id),z=p.sizes[i];return `• ${n} × ${p.n} ${z.g} g (${mxn(z.p)} c/u) = ${mxn(n*z.p)}`}).join("\n");
+  const msg=`Hola, quiero hacer este pedido a La Picosita de la Sierra:\n\n${rows}\n\nFrascos: ${q}\nSubtotal: ${mxn(s)} (sin envío)\n\nNombre: ${name}\nCP: ${cp}\nDirección: ${addr}\n\n¿Me confirman el costo de envío?`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
+});
+
+/* ---------- Manifiesto B2B ---------- */
+const mf={};P.forEach(p=>mf[p.id]={i:0,boxes:0});
+$("#mfRows").innerHTML=P.map(p=>`<tr data-id="${p.id}"><td class="sku" data-l="SKU">${p.id}</td><td class="nm">${p.n}</td>
+ <td data-l="Presentación"><select aria-label="Presentación de ${p.n}">${p.sizes.map((z,i)=>`<option value="${i}">${z.g} g</option>`).join("")}</select></td>
+ <td data-l="Cajas"><span class="qty"><button type="button" data-d="-1" aria-label="Menos cajas de ${p.n}">−</button><output aria-label="Cajas de ${p.n}">0</output><button type="button" data-d="1" aria-label="Más cajas de ${p.n}">+</button></span></td>
+ <td class="num mono" data-l="Piezas">0</td></tr>`).join("");
+function mfCalc(){
+  const per=+document.querySelector("[name=box]:checked").value;let boxes=0,pcs=0,g=0,ref=0;
+  $$("#mfRows tr").forEach(tr=>{const p=P.find(x=>x.id===tr.dataset.id),st=mf[p.id],pz=st.boxes*per,z=p.sizes[st.i];
+    tr.querySelector("output").textContent=st.boxes;tr.querySelector(".num").textContent=pz;boxes+=st.boxes;pcs+=pz;g+=pz*z.g;ref+=pz*z.p});
+  $("#tBoxes").textContent=boxes;$("#tPieces").textContent=pcs.toLocaleString("es-MX");$("#tKg").textContent=(g/1000).toLocaleString("es-MX",{maximumFractionDigits:1})+" kg";$("#tRef").textContent=mxn(ref);
+  return{boxes,pcs,g,ref,per};
+}
+$("#mfRows").addEventListener("click",e=>{const tr=e.target.closest("tr");if(!tr||!e.target.dataset.d)return;const st=mf[tr.dataset.id];st.boxes=Math.max(0,Math.min(99,st.boxes+ +e.target.dataset.d));mfCalc()});
+$("#mfRows").addEventListener("change",e=>{if(e.target.tagName==="SELECT"){mf[e.target.closest("tr").dataset.id].i=+e.target.value;mfCalc()}});
+$$("[name=box]").forEach(r=>r.addEventListener("change",mfCalc));
+$("#manifest").addEventListener("submit",e=>{
+  e.preventDefault();const t=mfCalc();const name=$("#mfName").value.trim();
+  if(!t.boxes){$("#mfErr").textContent="Agrega al menos una caja al manifiesto.";return}
+  if(!name){$("#mfName").setAttribute("aria-invalid","true");$("#mfErr").textContent="Escribe tu nombre o razón social.";$("#mfName").focus();return}
+  $("#mfErr").textContent="";$("#mfName").setAttribute("aria-invalid","false");
+  const rows=P.filter(p=>mf[p.id].boxes).map(p=>{const st=mf[p.id];return `• ${p.id} ${p.n} ${p.sizes[st.i].g} g: ${st.boxes} caja(s) de ${t.per} = ${st.boxes*t.per} pzas`}).join("\n");
+  const msg=`Hola, solicito cotización de mayoreo/exportación a La Picosita de la Sierra.\n\nCliente: ${name}\nDestino: ${$("#dest").value}\nCaja máster: ${t.per} frascos\n\n${rows}\n\nTotal: ${t.boxes} cajas, ${t.pcs} piezas, ${(t.g/1000).toLocaleString("es-MX",{maximumFractionDigits:1})} kg netos de producto\nReferencia a precio de menudeo: ${mxn(t.ref)}\n${$("#fito").checked?"Requiero ficha fitosanitaria y documentación de despacho fronterizo.\n":""}\nFavor de cotizar descuento por volumen, cubicaje y arancel.`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
+});
+
+/* ---------- Aviso ---------- */
+let tt;function toast(m){const el=$("#toast");el.textContent=m;el.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>el.classList.remove("show"),2200)}
+render();mfCalc();
+</script>
+</body>
+</html>
